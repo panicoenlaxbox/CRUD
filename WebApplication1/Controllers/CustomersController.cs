@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using AutoMapper;
 using WebApplication1.Models;
 using WebApplication1.ViewModels.Customers;
@@ -42,7 +38,7 @@ namespace WebApplication1.Controllers
                 return View(model);
             }
 
-            var customer = Mapper.Map<CustomersCreateViewModel, Customer>(model);
+            var customer = Mapper.Map<CustomersCreateViewModel, CustomerDto>(model);
             _customersService.Add(customer);
             return RedirectToAction("Index");
         }
@@ -50,7 +46,7 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id)
         {
             var customer = _customersService.Find(id);
-            var model = Mapper.Map<Customer, CustomersEditViewModel>(customer);
+            var model = Mapper.Map<CustomerDto, CustomersEditViewModel>(customer);
             return View(model);
         }
 
@@ -62,7 +58,7 @@ namespace WebApplication1.Controllers
             {
                 return View(model);
             }
-            var customer = Mapper.Map<CustomersEditViewModel, Customer>(model);
+            var customer = Mapper.Map<CustomersEditViewModel, CustomerDto>(model);
             _customersService.Update(customer);
             return RedirectToAction("Index");
         }
