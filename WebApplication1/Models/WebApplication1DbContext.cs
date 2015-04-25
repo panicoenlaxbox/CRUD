@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
 namespace WebApplication1.Models
@@ -18,6 +19,9 @@ namespace WebApplication1.Models
     public class Customer
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(6)]
+        [RegularExpression(@"^s\w{1,5}$")]
         public string Name { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
     }

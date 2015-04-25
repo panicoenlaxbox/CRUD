@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -180,7 +181,7 @@ namespace WebApplication1.Models
         }
 
         public void Add(CustomerDto customer)
-        {            
+        {
             _customersRepository.Add(Mapper.Map<CustomerDto, Customer>(customer));
             _unitOfWork.SaveChanges();
         }
@@ -216,7 +217,15 @@ namespace WebApplication1.Models
 
         public void SaveChanges()
         {
-            _context.SaveChanges();
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public ICustomersRepository Customers
