@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using NUnit.Framework;
 using WebApplication1.Models;
 
 namespace WebApplication1.Test
@@ -38,6 +40,27 @@ namespace WebApplication1.Test
             //Act
             PaginatedResult<CustomerDto> result = service.GetAll(1, 10, "John Doe", "Name");
             //Assert
+            Assert.Pass();
+        }
+    }
+
+    public class WebApplication1DbContextTests
+    {
+        [Test]
+        public void Customer_Validating()
+        {
+            using (var context = new WebApplication1DbContext())
+            {
+                var customer = new Customer()
+                {
+                    Name = null
+                };
+                context.Customers.Add(customer);
+                DbEntityEntry<Customer> entry = context.Entry(customer);
+                DbEntityValidationResult validationResult = entry.GetValidationResult();
+                System.Diagnostics.Debug.WriteLine(validationResult.IsValid);
+                System.Diagnostics.Debug.WriteLine(validationResult.ValidationErrors.Count);
+            }
             Assert.Pass();
         }
     }

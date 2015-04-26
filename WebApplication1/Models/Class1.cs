@@ -100,6 +100,7 @@ namespace WebApplication1.Models
         public EfCustomersRepository(DbContext context)
         {
             _repository = new EfRepository<Customer>(context);
+            
         }
 
         public Customer Find(int id)
@@ -218,14 +219,8 @@ namespace WebApplication1.Models
         public void SaveChanges()
         {
 
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.SaveChanges();
+
         }
 
         public ICustomersRepository Customers
