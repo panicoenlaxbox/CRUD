@@ -218,7 +218,6 @@ namespace WebApplication1.Models
 
         public void SaveChanges()
         {
-
             _context.SaveChanges();
 
         }

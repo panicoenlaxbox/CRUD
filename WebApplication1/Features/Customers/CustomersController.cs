@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
+using WebApplication1.Features.Customers.ViewModels;
 using WebApplication1.Models;
-using WebApplication1.ViewModels.Customers;
 
-namespace WebApplication1.Controllers
+namespace WebApplication1.Features.Customers
 {
     public class CustomersController : Controller
     {
@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult Index(int page = 1, string sort = "Id", string sortDir = "ASC")
         {
-            var model = new CustomersIndexViewModel
+            var model = new IndexViewModel
             {
                 Result = _customersService.GetAll(page, 10, string.Format("{0} {1}", sort, sortDir), null)
             };
@@ -25,20 +25,20 @@ namespace WebApplication1.Controllers
 
         public ActionResult Create()
         {
-            var model = new CustomersCreateViewModel();
+            var model = new CreateViewModel();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CustomersCreateViewModel model)
+        public ActionResult Create(CreateViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var customer = Mapper.Map<CustomersCreateViewModel, CustomerDto>(model);
+            var customer = Mapper.Map<CreateViewModel, CustomerDto>(model);
             _customersService.Add(customer);
             return RedirectToAction("Index");
         }
@@ -46,19 +46,19 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id)
         {
             var customer = _customersService.Find(id);
-            var model = Mapper.Map<CustomerDto, CustomersEditViewModel>(customer);
+            var model = Mapper.Map<CustomerDto, EditViewModel>(customer);
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CustomersEditViewModel model)
+        public ActionResult Edit(EditViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            var customer = Mapper.Map<CustomersEditViewModel, CustomerDto>(model);
+            var customer = Mapper.Map<EditViewModel, CustomerDto>(model);
             _customersService.Update(customer);
             return RedirectToAction("Index");
         }

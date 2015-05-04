@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using WebApplication1.Features.Customers;
+using WebApplication1.Features.Customers.ViewModels;
 using WebApplication1.Models;
-using WebApplication1.ViewModels.Customers;
 
 namespace WebApplication1.App_Start
 {
@@ -13,9 +14,9 @@ namespace WebApplication1.App_Start
                 configuration.AllowNullDestinationValues = true;
                 Mapper.CreateMap<Customer, CustomerDto>(); //sale del servicio
                 Mapper.CreateMap<CustomerDto, Customer>(); //entra al servicio
-                Mapper.CreateMap<CustomersCreateViewModel, CustomerDto>(); //entra en el controlador
-                Mapper.CreateMap<CustomersEditViewModel, CustomerDto>(); //entra en el controlador
-                Mapper.CreateMap<CustomerDto, CustomersEditViewModel>(); //entra en la vista
+                Mapper.CreateMap<CreateViewModel, CustomerDto>(); //entra en el controlador
+                Mapper.CreateMap<EditViewModel, CustomerDto>(); //entra en el controlador
+                Mapper.CreateMap<CustomerDto, EditViewModel>(); //entra en la vista
             });
         }
     }

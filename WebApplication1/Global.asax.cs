@@ -18,6 +18,9 @@ namespace WebApplication1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.Configure();
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new FeatureViewLocationRazorViewEngine());
         }
     }
 }

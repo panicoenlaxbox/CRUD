@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().ToTable("Customers").Property(customer => customer.Name).HasMaxLength(6).IsRequired();
+            modelBuilder.Entity<Customer>().ToTable("Customers").Property(customer => customer.Name).IsRequired();
             modelBuilder.Entity<Address>().ToTable("Addresses");
         }
     }
@@ -19,7 +19,6 @@ namespace WebApplication1.Models
     public class Customer
     {
         public int Id { get; set; }
-        [RegularExpression(@"^s\w{1,5}$")]
         public string Name { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
     }

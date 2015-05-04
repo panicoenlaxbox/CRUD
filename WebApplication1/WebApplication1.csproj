@@ -157,28 +157,22 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FeatureViewLocationRazorViewEngine.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Features\Customers\ViewModels\CreateViewModel.cs" />
+    <Compile Include="Features\Customers\CustomersController.cs" />
+    <Compile Include="Features\Customers\ViewModels\EditViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504131407402_InitialCreate.cs" />
-    <Compile Include="Migrations\201504131407402_InitialCreate.Designer.cs">
-      <DependentUpon>201504131407402_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504252217232_Nombre_Cliente.cs" />
-    <Compile Include="Migrations\201504252217232_Nombre_Cliente.Designer.cs">
-      <DependentUpon>201504252217232_Nombre_Cliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\OrderByExtension.cs" />
     <Compile Include="Models\WebApplication1DbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Customers\CustomersIndexViewModel.cs" />
+    <Compile Include="Features\Customers\ViewModels\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -189,6 +183,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Features\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -208,14 +203,13 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Features\_ViewStart.cshtml" />
+    <Content Include="Features\Shared\Error.cshtml" />
+    <Content Include="Features\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Features\Customers\Views\Index.cshtml" />
+    <Content Include="Features\Customers\Views\Create.cshtml" />
+    <Content Include="Features\Customers\Views\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,14 +220,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504131407402_InitialCreate.resx">
-      <DependentUpon>201504131407402_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504252217232_Nombre_Cliente.resx">
-      <DependentUpon>201504252217232_Nombre_Cliente.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
